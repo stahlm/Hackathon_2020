@@ -1,0 +1,17 @@
+"0","```r
+colnames(Pb_data)
+```"
+"1"," [1] \"School_District\"                       \"School\"                               
+ [3] \"County\"                                \"Type_of_Organization\"                 
+ [5] \"Number_of_Outlets\"                     \"Any_Buildings_with_Lead-Free_Plumbing\"
+ [7] \"Previously_Sampled_Outlets\"            \"Outlets_Waiver_Requested\"             
+ [9] \"Waivers_Granted\"                       \"Outlets_Sampled_After_Regulation\"     
+[11] \"Sampling_Complete\"                     \"Sampling_Completion_Date\"             
+[13] \"Number_of_Outlets_LT_15_ppb\"           \"Number_of_Outlets_GT_15_ppb\"          
+[15] \"Out_of_Service\"                        \"All_Results_Received\t\"                
+[17] \"Date_All_Results_Received\"             \"BEDS_Code\"                            
+[19] \"School_Street\"                         \"School_City\"                          
+[21] \"School_State\"                          \"School_Zip_Code\"                      
+[23] \"Date_Sampling_Updated\"                 \"Date_Results_Updated\"                 
+[25] \"County_Location\"                       \"Location\"                             
+"

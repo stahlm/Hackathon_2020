@@ -1,0 +1,4 @@
+"0","```r
+Pb_data <- Pb_data %>% 
+  filter(!is.na(Number_of_Outlets))
+```"
