@@ -1,0 +1,57 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## Load in packages 
+First let's load in the packages that we'll use in our analysis.  These packages provide us with tools and additional functionality that will make it easier to conduct our analysis.
+```{r}
+library(tidyverse)
+```
+
+<br/>
+
+
+
+## Load in the data and get familiar with the contents
+Today we are going to use data on lead (Pb) in drinking water in New York State schools.  The data is from the New York State Department of Health and can be [accessed here](https://health.data.ny.gov/Health/Lead-Testing-in-School-Drinking-Water-Sampling-and/rkyy-fsv9).  
+
+Now let's load in the data that we will use in our analysis.  
+
+The code below loads in a **csv** file (essentially an Excel file) with the data and converts it into a data table in R.  
+```{r}
+Pb_data <- read_csv("./data/Lead_Testing_in_School_Drinking_Water_Sampling_hackathon.csv")
+```
+
+
+Let's take a quick look at the data.  We'll use the `head()` function to view the first six rows of the dataset 
+```{r}
+head(Pb_data)
+```
+
+We can also see the names of each of the columns in the dataset by using the `colnames()` function.
+```{r}
+colnames(Pb_data)
+```
+
+<br/>
+
+A descrition of each of the variable (columns) can be [found here](https://health.data.ny.gov/api/views/rkyy-fsv9/files/66d38bbd-d17b-40ac-b09f-e18fd3b79aff?download=true&filename=NYSDOH_School%20Lead_Recent_Data%20Dictionary.pdf)
+
+```{r}
+Pb_data <- Pb_data %>% 
+  filter(!is.na(Number_of_Outlets))
+```
+
+
+
+
+```{r}
+Pb_data %>% 
+  group_by(School_District) %>% 
+  summarise(num_schools = n(),
+            Number_of_Outlets_Sampled = sum(Number_of_Outlets_GT_15_ppb + Number_of_Outlets_LT_15_ppb, na.rm = T),
+            percent_GT_15ppb = 100*sum(Number_of_Outlets_GT_15_ppb, na.rm = T)/sum(Number_of_Outlets_GT_15_ppb + Number_of_Outlets_LT_15_ppb, na.rm = T)) %>% 
+  arrange(desc(percent_GT_15ppb))
+```
+
