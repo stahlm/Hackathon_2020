@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1576893713113.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "53C7907E",
+    "lastKnownWriteTime" : 8457606641020305408,
+    "last_content_update" : 1576893713113,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "B172120D",
+        "caption" : "NY_race",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=NY_race&cache_key=B172120D",
+        "displayedObservations" : "248",
+        "environment" : "",
+        "object" : "NY_race",
+        "preview" : "0",
+        "totalObservations" : "248",
+        "variables" : "5"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

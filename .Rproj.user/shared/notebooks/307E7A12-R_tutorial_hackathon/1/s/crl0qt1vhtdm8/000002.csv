@@ -1,19 +1,19 @@
-"0","Pb_data <- read_csv(""https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_Testing_in_School_Drinking_Water_Sampling_and_Results__Most_Recently_Reported_Beginning_2016.csv"")"
+"0","Pb_data <- read_csv(""https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_Testing_in_School_Drinking_Water_Sampling_hackathon.csv"")"
 "2","Parsed with column specification:
 cols(
   .default = col_character(),
-  `Number of Outlets` = col_integer(),
-  `Previously Sampled Outlets` = col_integer(),
-  `Outlets Waiver Requested` = col_integer(),
-  `Waivers Granted` = col_integer(),
-  `Outlets Sampled After Regulation` = col_integer(),
-  `Number of Outlets, Result = 15 ppb` = col_integer(),
-  `Number of Outlets, Result > 15 ppb` = col_integer(),
-  `School Zip Code` = col_integer()
+  Number_of_Outlets = col_integer(),
+  Previously_Sampled_Outlets = col_integer(),
+  Outlets_Waiver_Requested = col_integer(),
+  Waivers_Granted = col_integer(),
+  Outlets_Sampled_After_Regulation = col_integer(),
+  Number_of_Outlets_LT_15_ppb = col_integer(),
+  Number_of_Outlets_GT_15_ppb = col_integer(),
+  School_Zip_Code = col_integer()
 )
 "
 "2","See spec(...) for full column specifications.
 "
 "2","2 parsing failures.
-row [38;5;246m# A tibble: 2 x 5[39m col     row col         expected          actual file                                                                expected   [3m[38;5;246m<int>[39m[23m [3m[38;5;246m<chr>[39m[23m       [3m[38;5;246m<chr>[39m[23m             [3m[38;5;246m<chr>[39m[23m  [3m[38;5;246m<chr>[39m[23m                                                               actual [38;5;250m1[39m  [4m3[24m874 School Zip~ no trailing char~ -0180  'https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_Tes~ file [38;5;250m2[39m  [4m4[24m666 School Zip~ an integer        NY     'https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_Tes~
+row [38;5;246m# A tibble: 2 x 5[39m col     row col          expected         actual file                                                                       expected   [3m[38;5;246m<int>[39m[23m [3m[38;5;246m<chr>[39m[23m        [3m[38;5;246m<chr>[39m[23m            [3m[38;5;246m<chr>[39m[23m  [3m[38;5;246m<chr>[39m[23m                                                                      actual [38;5;250m1[39m  [4m3[24m874 School_Zip_~ no trailing cha~ -0180  'https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_Testing_in~ file [38;5;250m2[39m  [4m4[24m666 School_Zip_~ an integer       NY     'https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_Testing_in~
 "

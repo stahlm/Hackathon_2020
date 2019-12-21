@@ -7,10 +7,93 @@ output: html_notebook
 First let's load in the packages that we'll use in our analysis.  These packages provide us with tools and additional functionality that will make it easier to conduct our analysis.
 ```{r}
 library(tidyverse)
+library(tidycensus)
 ```
 
-<br/>
 
+```{r}
+census_api_key("a26529040c6be62df861c3beb8159a03068ba77e")
+```
+
+
+
+<br/>
+https://api.census.gov/data/2010/dec/sf1/variables.html
+```{r}
+vars10 <- c("P005003", "P005004", "P005006", "P004003")
+NY_race <- get_decennial(geography = "county", variables = vars10, year = 2010,
+                    summary_var = "P001001", state = "NY")
+```
+
+
+
+```{r}
+NY_race <- NY_race %>% 
+  spread(key = "variable", value = "value")
+```
+
+```{r}
+NY_race <- NY_race %>% 
+  rename(County = "NAME",
+         County_population = "summary_value",
+         County_White = "P005003",
+         County_Black_AfAm = "P005004",
+         County_Asian = "P005006",
+         County_Hispanic_Latino = "P004003") %>% 
+  
+  separate(County, into = c("County", "State"),
+           sep = ",") %>% 
+  
+  mutate(County = str_replace(County, "County",""))
+```
+
+
+```{r}
+NY_race <- NY_race %>% 
+  mutate(County = str_trim(County, side = "both"))
+```
+
+
+
+```{r}
+NY_income_zip <- get_acs(geography = "zcta", variables = "B19013_001",
+                     year = 2012)
+```
+
+```{r}
+NY_income_zip <- NY_income_zip %>% 
+  separate(NAME, 
+           into = c("code","School_Zip_Code"),
+           sep = " ") %>% 
+  select(School_Zip_Code, Median_HH_income = estimate)
+```
+
+
+
+```{r}
+# NY_income <- get_acs(geography = "county", variables = "B19013_001",
+#                      year = 2010, state = "NY")
+```
+
+```{r}
+# NY_income <- NY_income %>% 
+#   select(GEOID,
+#          County = "NAME",
+#          HH_Income = "estimate")
+```
+
+```{r}
+# NY_income <- NY_income %>% 
+#   separate(County, into = c("County", "State"),
+#            sep = ",")
+```
+
+
+```{r}
+# NY_income <- NY_income %>% 
+#   mutate(County = str_replace(County, "County",""))
+  
+```
 
 
 ## Load in the data and get familiar with the contents
@@ -20,10 +103,49 @@ Now let's load in the data that we will use in our analysis.
 
 The code below loads in a **csv** file (essentially an Excel file) with the data and converts it into a data table in R.  
 ```{r}
-Pb_data <- read_csv("https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_Testing_in_School_Drinking_Water_Sampling_and_Results__Most_Recently_Reported_Beginning_2016.csv")
+Pb_data <- read_csv("https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_Testing_in_School_Drinking_Water_Sampling_hackathon.csv")
+```
+
+```{r}
+Pb_data <- Pb_data %>% 
+  mutate(County = str_trim(County, side = "both")) %>% 
+  mutate(County = if_else(County == "Saint Lawrence", "St. Lawrence", 
+                          County)) %>% 
+  mutate(School_Zip_Code = as.character(School_Zip_Code))
 ```
 
 
+```{r}
+Pb_data <- left_join(Pb_data, NY_race,
+                     by = "County")
+```
+
+```{r}
+Pb_data <- left_join(Pb_data, NY_income_zip,
+                     by = "School_Zip_Code")
+```
+
+```{r}
+Pb_data <- Pb_data %>% 
+  select(School,
+         Type_of_Organization,
+         County, 
+         School_District, 
+         School_City,
+         School_Zip_Code,
+         School_Street,
+         Number_of_Outlets_LT_15_ppb,
+         Number_of_Outlets_GT_15_ppb,
+         "Any_Buildings_with_Lead-Free_Plumbing",
+         County_Location,
+         Median_HH_income,
+         County_population,
+         County_White,
+         County_Black_AfAm,
+         County_Asian,
+         County_Hispanic_Latino
+         )
+```
 
 
 Let's take a quick look at the data.  We'll use the `head()` function to view the first six rows of the dataset 
@@ -38,7 +160,7 @@ colnames(Pb_data)
 
 <br/>
 
-A descrition of each of the variable (columns) can be [found here](https://health.data.ny.gov/api/views/rkyy-fsv9/files/66d38bbd-d17b-40ac-b09f-e18fd3b79aff?download=true&filename=NYSDOH_School%20Lead_Recent_Data%20Dictionary.pdf)
+A descrition of each of the variable (columns) can be [found here](https://github.com/stahlm/Hackathon_2020/raw/master/documents/NYSDOH_School_Lead_Recent_Data_Dictionary.pdf)
 
 ```{r}
 Pb_data <- Pb_data %>% 
@@ -49,11 +171,19 @@ Pb_data <- Pb_data %>%
 
 
 ```{r}
-Pb_data %>% 
+summary_table <- Pb_data %>% 
   group_by(School_District) %>% 
   summarise(num_schools = n(),
             Number_of_Outlets_Sampled = sum(Number_of_Outlets_GT_15_ppb + Number_of_Outlets_LT_15_ppb, na.rm = T),
-            percent_GT_15ppb = 100*sum(Number_of_Outlets_GT_15_ppb, na.rm = T)/sum(Number_of_Outlets_GT_15_ppb + Number_of_Outlets_LT_15_ppb, na.rm = T)) %>% 
+            percent_GT_15ppb = 100*sum(Number_of_Outlets_GT_15_ppb, na.rm = T)/sum(Number_of_Outlets_GT_15_ppb + Number_of_Outlets_LT_15_ppb, na.rm = T),
+            County = County) %>% 
   arrange(desc(percent_GT_15ppb))
+```
+
+
+
+```{r}
+summary_table %>% 
+  ggplot(aes(x = ))
 ```
 

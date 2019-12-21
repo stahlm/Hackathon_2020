@@ -1,0 +1,3 @@
+"0","# NY_income <- NY_income %>% "
+"0","#   mutate(County = str_replace(County, ""County"",""""))"
+"0","  "

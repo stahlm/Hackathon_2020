@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1576962666678.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "28E7AC30",
+    "lastKnownWriteTime" : 2484628536874007931,
+    "last_content_update" : 1576962666678,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3FF52BB4",
+        "caption" : "NY_income_zip",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=NY_income_zip&cache_key=3FF52BB4",
+        "displayedObservations" : 33120,
+        "environment" : "",
+        "object" : "NY_income_zip",
+        "preview" : 0,
+        "totalObservations" : 33120,
+        "variables" : 5
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
