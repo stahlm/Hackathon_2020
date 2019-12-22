@@ -1,0 +1,8 @@
+"0","Pb_data %>% "
+"0","  group_by(County) %>% "
+"0","  summarize(Total_Outlets = sum(Number_of_Outlets_LT_15_ppb, Number_of_Outlets_GT_15_ppb, na.rm = T),"
+"0","            Percent_Outlets_GT_15_ppb = 100*sum(Number_of_Outlets_GT_15_ppb, na.rm = T)/Total_Outlets) %>% "
+"0","  ggplot(aes(x = reorder(County, Percent_Outlets_GT_15_ppb) , y = Percent_Outlets_GT_15_ppb)) +"
+"0","  geom_point() +"
+"0","  theme_bw() +"
+"0","  theme(axis.text.x = element_text(angle = 60, hjust = 1)) "

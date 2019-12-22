@@ -1,0 +1,168 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(tidyverse)
+library(tigris)
+library(leaflet)
+library(sf)
+```
+
+
+## Load in dataset
+```{r}
+Pb_data <- read_csv("https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_schools_hackathon_dataset.csv") 
+```
+
+## Look at the data
+```{r}
+head(Pb_data)
+```
+
+```{r}
+summary(Pb_data)
+```
+
+
+## Add some additional columns (variables)
+
+### Total number of outlets in each school
+```{r}
+Pb_data <- Pb_data %>% 
+  mutate(Total_Outlets = Number_of_Outlets_LT_15_ppb + Number_of_Outlets_GT_15_ppb)
+```
+
+
+### Percent of outlets above 15 ppb Pb (in each school)
+```{r}
+Pb_data <- Pb_data %>% 
+  mutate(Percent_Outlets_GT_15_ppb = 100*(Number_of_Outlets_GT_15_ppb/Total_Outlets))
+```
+
+
+### County racial/ethnic demographics (each group expressed as percent of total population)
+```{r}
+Pb_data <- Pb_data %>% 
+  mutate(Percent_White = 100*County_White/County_population,
+         Percent_AfAm = 100*County_Black_AfAm/County_population,
+         Percent_Asian = 100*County_Asian/County_population,
+         Percent_Latino = 100*County_Hispanic_Latino/County_population)
+```
+
+
+
+
+## Initial analysis 
+
+```{r}
+Pb_data %>% 
+  ggplot(aes(x = Out_of_Service, y = Percent_Outlets_GT_15_ppb)) +
+  geom_jitter(height = 0)
+```
+
+
+```{r}
+Pb_data %>% 
+  mutate(Income_Level = if_else(Median_HH_income > 80000, "Higher Income", "Lower Income")) %>% 
+  filter(!is.na(Income_Level)) %>% 
+  ggplot(aes(x = Income_Level, y = Percent_Outlets_GT_15_ppb)) +
+  geom_violin() +
+  ylim(0,15)
+```
+
+
+
+```{r}
+Pb_data %>% 
+  ggplot(aes(x = Median_HH_income, y = Percent_Outlets_GT_15_ppb, size = Total_Outlets)) +
+  geom_point(alpha = 0.25) +
+  facet_wrap(~ Out_of_Service)
+
+
+```
+
+
+```{r}
+Pb_data %>% 
+  group_by(County) %>% 
+  summarize(Total_Outlets = sum(Number_of_Outlets_LT_15_ppb, Number_of_Outlets_GT_15_ppb, na.rm = T),
+            Percent_Outlets_GT_15_ppb = 100*sum(Number_of_Outlets_GT_15_ppb, na.rm = T)/Total_Outlets) %>% 
+  ggplot(aes(x = reorder(County, Percent_Outlets_GT_15_ppb) , y = Percent_Outlets_GT_15_ppb)) +
+  geom_point() +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) 
+  
+```
+
+
+
+```{r}
+#ri <- counties("NY")
+ri20 <- counties("NY", cb = TRUE, resolution = "20m")
+plot(ri20)
+plot(ri20, border = "red", add = TRUE)
+```
+
+```{r}
+a <- st_as_sf(ri20) %>% 
+  rename(County = NAME)
+```
+
+
+```{r}
+a_test <- Pb_data %>% 
+  group_by(County) %>% 
+  summarize(Total_Outlets = sum(Number_of_Outlets_LT_15_ppb, Number_of_Outlets_GT_15_ppb, na.rm = T),
+            Percent_Outlets_GT_15_ppb = 100*sum(Number_of_Outlets_GT_15_ppb, na.rm = T)/Total_Outlets,
+            Latitude = first(Latitude),
+            Longitude = first(Longitude),
+            HH_Income = median(Median_HH_income, na.rm = T))
+```
+
+```{r}
+a <- left_join(a, a_test)
+```
+
+
+
+```{r}
+Pb_data %>% 
+  group_by(County) %>% 
+  summarize(Total_Outlets = sum(Number_of_Outlets_LT_15_ppb, Number_of_Outlets_GT_15_ppb, na.rm = T),
+            Percent_Outlets_GT_15_ppb = 100*sum(Number_of_Outlets_GT_15_ppb, na.rm = T)/Total_Outlets,
+            Latitude = first(Latitude),
+            Longitude = first(Longitude)) %>% 
+  
+  leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(lng = ~Longitude, lat = ~Latitude)
+  
+```
+
+
+
+```{r}
+leaflet(a) %>%
+  addPolygons(color = "#444444", weight = 1, smoothFactor = 0.5, popup = ~ paste(County, round(HH_Income,2)),
+    opacity = 1.0, fillOpacity = 0.5,
+    fillColor = ~colorQuantile("YlOrRd", HH_Income)(HH_Income),
+    highlightOptions = highlightOptions(color = "white", weight = 2,
+      bringToFront = TRUE)) %>% 
+  addTiles()
+```
+
+
+
+```{r}
+leaflet(a) %>%
+  addPolygons(color = "#444444", weight = 1, smoothFactor = 0.5, popup = ~ paste(County, round(Percent_Outlets_GT_15_ppb,2)),
+    opacity = 1.0, fillOpacity = 0.5,
+    fillColor = ~colorQuantile("YlOrRd", Percent_Outlets_GT_15_ppb)(Percent_Outlets_GT_15_ppb),
+    highlightOptions = highlightOptions(color = "white", weight = 2,
+      bringToFront = TRUE)) %>% 
+  addTiles()
+```
+

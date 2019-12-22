@@ -181,25 +181,10 @@ $(document).ready(function () {
 <p>First let’s load in the packages that we’ll use in our analysis. These packages provide us with tools and additional functionality that will make it easier to conduct our analysis.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5gYGAifQ== -->
-<pre class="r"><code>library(tidyverse)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHRpZHljZW5zdXMpXG5gYGAifQ== -->
+<pre class="r"><code>library(tidyverse)
+library(tidycensus)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoicGFja2FnZSCRdGlkeXZlcnNlkiB3YXMgYnVpbHQgdW5kZXIgUiB2ZXJzaW9uIDMuNS4zXHUwMDFiWzMwbS0tIFx1MDAxYlsxbUF0dGFjaGluZyBwYWNrYWdlc1x1MDAxYlsyMm0gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIHRpZHl2ZXJzZSAxLjIuMSAtLVx1MDAxYlszOW1cblx1MDAxYlszMG1cdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bWdncGxvdDJcdTAwMWJbMzBtIDMuMS4wICAgICBcdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bXB1cnJyICBcdTAwMWJbMzBtIDAuMi41XG5cdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bXRpYmJsZSBcdTAwMWJbMzBtIDIuMS4xICAgICBcdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bWRwbHlyICBcdTAwMWJbMzBtIDAuOC4xXG5cdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bXRpZHlyICBcdTAwMWJbMzBtIDAuOC4xICAgICBcdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bXN0cmluZ3JcdTAwMWJbMzBtIDEuMy4xXG5cdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bXJlYWRyICBcdTAwMWJbMzBtIDEuMS4xICAgICBcdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bWZvcmNhdHNcdTAwMWJbMzBtIDAuMy4wXHUwMDFiWzM5bVxucGFja2FnZSCRdGliYmxlkiB3YXMgYnVpbHQgdW5kZXIgUiB2ZXJzaW9uIDMuNS4zcGFja2FnZSCRZHBseXKSIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy41LjNcdTAwMWJbMzBtLS0gXHUwMDFiWzFtQ29uZmxpY3RzXHUwMDFiWzIybSAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gdGlkeXZlcnNlX2NvbmZsaWN0cygpIC0tXG5cdTAwMWJbMzFteFx1MDAxYlszMG0gXHUwMDFiWzM0bWRwbHlyXHUwMDFiWzMwbTo6XHUwMDFiWzMybWZpbHRlcigpXHUwMDFiWzMwbSBtYXNrcyBcdTAwMWJbMzRtc3RhdHNcdTAwMWJbMzBtOjpmaWx0ZXIoKVxuXHUwMDFiWzMxbXhcdTAwMWJbMzBtIFx1MDAxYlszNG1kcGx5clx1MDAxYlszMG06Olx1MDAxYlszMm1sYWcoKVx1MDAxYlszMG0gICAgbWFza3MgXHUwMDFiWzM0bXN0YXRzXHUwMDFiWzMwbTo6bGFnKClcdTAwMWJbMzltXG4ifQ== -->
-<pre><code>package 㤼㸱tidyverse㤼㸲 was built under R version 3.5.3[30m-- [1mAttaching packages[22m --------------------------------------- tidyverse 1.2.1 --[39m
-[30m[32mv[30m [34mggplot2[30m 3.1.0     [32mv[30m [34mpurrr  [30m 0.2.5
-[32mv[30m [34mtibble [30m 2.1.1     [32mv[30m [34mdplyr  [30m 0.8.1
-[32mv[30m [34mtidyr  [30m 0.8.1     [32mv[30m [34mstringr[30m 1.3.1
-[32mv[30m [34mreadr  [30m 1.1.1     [32mv[30m [34mforcats[30m 0.3.0[39m
-package 㤼㸱tibble㤼㸲 was built under R version 3.5.3package 㤼㸱dplyr㤼㸲 was built under R version 3.5.3[30m-- [1mConflicts[22m ------------------------------------------ tidyverse_conflicts() --
-[31mx[30m [34mdplyr[30m::[32mfilter()[30m masks [34mstats[30m::filter()
-[31mx[30m [34mdplyr[30m::[32mlag()[30m    masks [34mstats[30m::lag()[39m</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5Y2Vuc3VzKVxuYGBgIn0= -->
-<pre class="r"><code>library(tidycensus)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoicGFja2FnZSDjpLzjuLF0aWR5Y2Vuc3Vz46S847iyIHdhcyBidWlsdCB1bmRlciBSIHZlcnNpb24gMy41LjNcbiJ9 -->
-<pre><code>package 㤼㸱tidycensus㤼㸲 was built under R version 3.5.3</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -293,6 +278,23 @@ Using FIPS code '36' for state 'NY'</code></pre>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUGJfZGF0YSA8LSByZWFkX2NzdihcImh0dHBzOi8vZ2l0aHViLmNvbS9zdGFobG0vSGFja2F0aG9uXzIwMjAvcmF3L21hc3Rlci9kYXRhL0xlYWRfVGVzdGluZ19pbl9TY2hvb2xfRHJpbmtpbmdfV2F0ZXJfU2FtcGxpbmdfaGFja2F0aG9uLmNzdlwiKVxuYGBgIn0= -->
 <pre class="r"><code>Pb_data &lt;- read_csv(&quot;https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_Testing_in_School_Drinking_Water_Sampling_hackathon.csv&quot;)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICAuZGVmYXVsdCA9IGNvbF9jaGFyYWN0ZXIoKSxcbiAgTnVtYmVyX29mX091dGxldHMgPSBjb2xfaW50ZWdlcigpLFxuICBQcmV2aW91c2x5X1NhbXBsZWRfT3V0bGV0cyA9IGNvbF9pbnRlZ2VyKCksXG4gIE91dGxldHNfV2FpdmVyX1JlcXVlc3RlZCA9IGNvbF9pbnRlZ2VyKCksXG4gIFdhaXZlcnNfR3JhbnRlZCA9IGNvbF9pbnRlZ2VyKCksXG4gIE91dGxldHNfU2FtcGxlZF9BZnRlcl9SZWd1bGF0aW9uID0gY29sX2ludGVnZXIoKSxcbiAgTnVtYmVyX29mX091dGxldHNfTFRfMTVfcHBiID0gY29sX2ludGVnZXIoKSxcbiAgTnVtYmVyX29mX091dGxldHNfR1RfMTVfcHBiID0gY29sX2ludGVnZXIoKSxcbiAgU2Nob29sX1ppcF9Db2RlID0gY29sX2ludGVnZXIoKVxuKVxuU2VlIHNwZWMoLi4uKSBmb3IgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbnMuXG4yIHBhcnNpbmcgZmFpbHVyZXMuXG5yb3cgXHUwMDFiWzM4OzU7MjQ2bSMgQSB0aWJibGU6IDIgeCA1XHUwMDFiWzM5bSBjb2wgICAgIHJvdyBjb2wgICAgICAgICAgZXhwZWN0ZWQgICAgICAgICBhY3R1YWwgZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZXhwZWN0ZWQgICBcdTAwMWJbM21cdTAwMWJbMzg7NTsyNDZtPGludD5cdTAwMWJbMzltXHUwMDFiWzIzbSBcdTAwMWJbM21cdTAwMWJbMzg7NTsyNDZtPGNocj5cdTAwMWJbMzltXHUwMDFiWzIzbSAgICAgICAgXHUwMDFiWzNtXHUwMDFiWzM4OzU7MjQ2bTxjaHI+XHUwMDFiWzM5bVx1MDAxYlsyM20gICAgICAgICAgICBcdTAwMWJbM21cdTAwMWJbMzg7NTsyNDZtPGNocj5cdTAwMWJbMzltXHUwMDFiWzIzbSAgXHUwMDFiWzNtXHUwMDFiWzM4OzU7MjQ2bTxjaHI+XHUwMDFiWzM5bVx1MDAxYlsyM20gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWN0dWFsIFx1MDAxYlszODs1OzI1MG0xXHUwMDFiWzM5bSAgXHUwMDFiWzRtM1x1MDAxYlsyNG04NzQgU2Nob29sX1ppcF9+IG5vIHRyYWlsaW5nIGNoYX4gLTAxODAgICdodHRwczovL2dpdGh1Yi5jb20vc3RhaGxtL0hhY2thdGhvbl8yMDIwL3Jhdy9tYXN0ZXIvZGF0YS9MZWFkX1Rlc3RpbmdfaW5+IGZpbGUgXHUwMDFiWzM4OzU7MjUwbTJcdTAwMWJbMzltICBcdTAwMWJbNG00XHUwMDFiWzI0bTY2NiBTY2hvb2xfWmlwX34gYW4gaW50ZWdlciAgICAgICBOWSAgICAgJ2h0dHBzOi8vZ2l0aHViLmNvbS9zdGFobG0vSGFja2F0aG9uXzIwMjAvcmF3L21hc3Rlci9kYXRhL0xlYWRfVGVzdGluZ19pbn5cbiJ9 -->
+<pre><code>Parsed with column specification:
+cols(
+  .default = col_character(),
+  Number_of_Outlets = col_integer(),
+  Previously_Sampled_Outlets = col_integer(),
+  Outlets_Waiver_Requested = col_integer(),
+  Waivers_Granted = col_integer(),
+  Outlets_Sampled_After_Regulation = col_integer(),
+  Number_of_Outlets_LT_15_ppb = col_integer(),
+  Number_of_Outlets_GT_15_ppb = col_integer(),
+  School_Zip_Code = col_integer()
+)
+See spec(...) for full column specifications.
+2 parsing failures.
+row [38;5;246m# A tibble: 2 x 5[39m col     row col          expected         actual file                                                                       expected   [3m[38;5;246m&lt;int&gt;[39m[23m [3m[38;5;246m&lt;chr&gt;[39m[23m        [3m[38;5;246m&lt;chr&gt;[39m[23m            [3m[38;5;246m&lt;chr&gt;[39m[23m  [3m[38;5;246m&lt;chr&gt;[39m[23m                                                                      actual [38;5;250m1[39m  [4m3[24m874 School_Zip_~ no trailing cha~ -0180  'https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_Testing_in~ file [38;5;250m2[39m  [4m4[24m666 School_Zip_~ an integer       NY     'https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_Testing_in~</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -324,7 +326,7 @@ Using FIPS code '36' for state 'NY'</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUGJfZGF0YSA8LSBQYl9kYXRhICU+JSBcbiAgc2VsZWN0KFNjaG9vbCxcbiAgICAgICAgIFR5cGVfb2ZfT3JnYW5pemF0aW9uLFxuICAgICAgICAgQ291bnR5LCBcbiAgICAgICAgIFNjaG9vbF9EaXN0cmljdCwgXG4gICAgICAgICBTY2hvb2xfQ2l0eSxcbiAgICAgICAgIFNjaG9vbF9aaXBfQ29kZSxcbiAgICAgICAgIFNjaG9vbF9TdHJlZXQsXG4gICAgICAgICBOdW1iZXJfb2ZfT3V0bGV0c19MVF8xNV9wcGIsXG4gICAgICAgICBOdW1iZXJfb2ZfT3V0bGV0c19HVF8xNV9wcGIsXG4gICAgICAgICBBbnlfQnVpbGRpbmdzX3dpdGhfTGVhZF9GcmVlX1BsdW1iaW5nLFxuICAgICAgICAgQ291bnR5X0xvY2F0aW9uLFxuICAgICAgICAgTWVkaWFuX0hIX2luY29tZSxcbiAgICAgICAgIENvdW50eV9wb3B1bGF0aW9uLFxuICAgICAgICAgQ291bnR5X1doaXRlLFxuICAgICAgICAgQ291bnR5X0JsYWNrX0FmQW0sXG4gICAgICAgICBDb3VudHlfQXNpYW4sXG4gICAgICAgICBDb3VudHlfSGlzcGFuaWNfTGF0aW5vXG4gICAgICAgICApXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuUGJfZGF0YSA8LSBQYl9kYXRhICU+JSBcbiAgc2VsZWN0KFNjaG9vbCxcbiAgICAgICAgIFR5cGVfb2ZfT3JnYW5pemF0aW9uLFxuICAgICAgICAgQ291bnR5LCBcbiAgICAgICAgIFNjaG9vbF9EaXN0cmljdCwgXG4gICAgICAgICBTY2hvb2xfQ2l0eSxcbiAgICAgICAgIFNjaG9vbF9aaXBfQ29kZSxcbiAgICAgICAgIFNjaG9vbF9TdHJlZXQsXG4gICAgICAgICBOdW1iZXJfb2ZfT3V0bGV0c19MVF8xNV9wcGIsXG4gICAgICAgICBOdW1iZXJfb2ZfT3V0bGV0c19HVF8xNV9wcGIsXG4gICAgICAgICBBbnlfQnVpbGRpbmdzX3dpdGhfTGVhZF9GcmVlX1BsdW1iaW5nLFxuICAgICAgICAgT3V0X29mX1NlcnZpY2UsXG4gICAgICAgICBDb3VudHlfTG9jYXRpb24sXG4gICAgICAgICBNZWRpYW5fSEhfaW5jb21lLFxuICAgICAgICAgQ291bnR5X3BvcHVsYXRpb24sXG4gICAgICAgICBDb3VudHlfV2hpdGUsXG4gICAgICAgICBDb3VudHlfQmxhY2tfQWZBbSxcbiAgICAgICAgIENvdW50eV9Bc2lhbixcbiAgICAgICAgIENvdW50eV9IaXNwYW5pY19MYXRpbm9cbiAgICAgICAgIClcbmBgYCJ9 -->
 <pre class="r"><code>Pb_data &lt;- Pb_data %&gt;% 
   select(School,
          Type_of_Organization,
@@ -336,6 +338,7 @@ Using FIPS code '36' for state 'NY'</code></pre>
          Number_of_Outlets_LT_15_ppb,
          Number_of_Outlets_GT_15_ppb,
          Any_Buildings_with_Lead_Free_Plumbing,
+         Out_of_Service,
          County_Location,
          Median_HH_income,
          County_population,

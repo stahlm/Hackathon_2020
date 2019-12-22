@@ -1,0 +1,2 @@
+"0","a <- st_as_sf(ri20) %>% "
+"0","  rename(County = NAME)"

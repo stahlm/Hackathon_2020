@@ -1,0 +1,6 @@
+"0","Pb_data %>% "
+"0","  mutate(Income_Level = if_else(Median_HH_income > 80000, ""Higher Income"", ""Lower Income"")) %>% "
+"0","  filter(!is.na(Income_Level)) %>% "
+"0","  ggplot(aes(x = Income_Level, y = Percent_Outlets_GT_15_ppb)) +"
+"0","  geom_violin() +"
+"0","  ylim(0,15)"

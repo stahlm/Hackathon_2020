@@ -1,0 +1,24 @@
+"0","Pb_data <- read_csv(""https://github.com/stahlm/Hackathon_2020/raw/master/data/Lead_schools_hackathon_dataset.csv"") "
+"2","Parsed with column specification:
+cols(
+  School = col_character(),
+  Type_of_Organization = col_character(),
+  County = col_character(),
+  School_District = col_character(),
+  School_City = col_character(),
+  School_Zip_Code = col_integer(),
+  School_Street = col_character(),
+  Number_of_Outlets_LT_15_ppb = col_integer(),
+  Number_of_Outlets_GT_15_ppb = col_integer(),
+  Any_Buildings_with_Lead_Free_Plumbing = col_character(),
+  Out_of_Service = col_character(),
+  Latitude = col_double(),
+  Longitude = col_double(),
+  Median_HH_income = col_double(),
+  County_population = col_integer(),
+  County_White = col_integer(),
+  County_Black_AfAm = col_integer(),
+  County_Asian = col_integer(),
+  County_Hispanic_Latino = col_integer()
+)
+"

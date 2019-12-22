@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1577030635383.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1E7877AF",
+    "lastKnownWriteTime" : 1577036667,
+    "last_content_update" : 1577036667751,
+    "path" : "~/Data_Analytics_Center/Hackathon/Hackathon_2020/R_tutorial_hackathon_2020.Rmd",
+    "project_path" : "R_tutorial_hackathon_2020.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "154,3",
+        "scrollLine" : "134",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,5 +1,0 @@
-"0","Pb_data <- Pb_data %>% "
-"0","  mutate(County = str_trim(County, side = ""both"")) %>% "
-"0","  mutate(County = if_else(County == ""Saint Lawrence"", ""St. Lawrence"", "
-"0","                          County)) %>% "
-"0","  mutate(School_Zip_Code = as.character(School_Zip_Code))"
