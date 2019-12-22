@@ -1,0 +1,7 @@
+"0","vars10 <- c(""P005003"", ""P005004"", ""P005006"", ""P004003"")"
+"0","NY_race <- get_decennial(geography = ""county"", variables = vars10, year = 2010,"
+"0","                    summary_var = ""P001001"", state = ""NY"")"
+"2","Getting data from the 2010 decennial Census
+"
+"2","Using FIPS code '36' for state 'NY'
+"

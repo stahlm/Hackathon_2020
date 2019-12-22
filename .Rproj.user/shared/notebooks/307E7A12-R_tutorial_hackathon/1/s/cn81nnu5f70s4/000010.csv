@@ -1,0 +1,6 @@
+"0","Pb_data <- Pb_data %>% "
+"0","  mutate(County_Location = str_replace(County_Location,""\\("" ,"""")) %>% "
+"0","  mutate(County_Location = str_replace(County_Location,""\\)"" ,"""")) %>% "
+"0","  separate(County_Location, "
+"0","           into = c(""Latitude"", ""Longitude""),"
+"0","           sep = "","")"

@@ -136,7 +136,8 @@ Pb_data <- Pb_data %>%
          School_Street,
          Number_of_Outlets_LT_15_ppb,
          Number_of_Outlets_GT_15_ppb,
-         "Any_Buildings_with_Lead_Free_Plumbing",
+         Any_Buildings_with_Lead_Free_Plumbing,
+         Out_of_Service,
          County_Location,
          Median_HH_income,
          County_population,
@@ -145,6 +146,22 @@ Pb_data <- Pb_data %>%
          County_Asian,
          County_Hispanic_Latino
          )
+```
+
+
+```{r}
+Pb_data <- Pb_data %>% 
+  mutate(County_Location = str_replace(County_Location,"\\(" ,"")) %>% 
+  mutate(County_Location = str_replace(County_Location,"\\)" ,"")) %>% 
+  separate(County_Location, 
+           into = c("Latitude", "Longitude"),
+           sep = ",")
+```
+
+
+```{r}
+write_csv(Pb_data, 
+          "./data/Lead_schools_hackathon_dataset.csv")
 ```
 
 
