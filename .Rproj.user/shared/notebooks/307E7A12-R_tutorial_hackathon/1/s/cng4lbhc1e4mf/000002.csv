@@ -1,9 +1,0 @@
-"0","summary_table <- Pb_data %>% "
-"0","  group_by(School_District) %>% "
-"0","  summarise(num_schools = n(),"
-"0","            Number_of_Outlets_Sampled = sum(Number_of_Outlets_GT_15_ppb + Number_of_Outlets_LT_15_ppb, na.rm = T),"
-"0","            percent_GT_15ppb = 100*sum(Number_of_Outlets_GT_15_ppb, na.rm = T)/sum(Number_of_Outlets_GT_15_ppb + Number_of_Outlets_LT_15_ppb, na.rm = T),"
-"0","            County = County) %>% "
-"0","  arrange(desc(percent_GT_15ppb))"
-"2","Error: Column `County` must be length 1 (a summary value), not 3
-"

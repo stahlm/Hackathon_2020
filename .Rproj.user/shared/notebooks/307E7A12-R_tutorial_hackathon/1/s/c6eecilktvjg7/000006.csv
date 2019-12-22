@@ -1,5 +1,0 @@
-"0","NY_income_zip <- NY_income_zip %>% "
-"0","  separate(NAME, "
-"0","           into = c(""code"",""School_Zip_Code""),"
-"0","           sep = "" "") %>% "
-"0","  select(School_Zip_Code, Median_HH_income = estimate)"

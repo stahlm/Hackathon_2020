@@ -136,7 +136,7 @@ Pb_data <- Pb_data %>%
          School_Street,
          Number_of_Outlets_LT_15_ppb,
          Number_of_Outlets_GT_15_ppb,
-         "Any_Buildings_with_Lead-Free_Plumbing",
+         "Any_Buildings_with_Lead_Free_Plumbing",
          County_Location,
          Median_HH_income,
          County_population,
