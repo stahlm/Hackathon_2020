@@ -1,3 +1,0 @@
-"0","Pb_data %>% "
-"0","  ggplot(aes(x = Out_of_Service, y = Percent_Outlets_GT_15_ppb)) +"
-"0","  geom_jitter(height = 0)"

@@ -1,7 +1,0 @@
-"0","a_test <- Pb_data %>% "
-"0","  group_by(County) %>% "
-"0","  summarize(Total_Outlets = sum(Number_of_Outlets_LT_15_ppb, Number_of_Outlets_GT_15_ppb, na.rm = T),"
-"0","            Percent_Outlets_GT_15_ppb = 100*sum(Number_of_Outlets_GT_15_ppb, na.rm = T)/Total_Outlets,"
-"0","            Latitude = first(Latitude),"
-"0","            Longitude = first(Longitude),"
-"0","            HH_Income = median(Median_HH_income, na.rm = T))"

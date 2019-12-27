@@ -1,0 +1,5 @@
+"0","```r
+# NY_income <- NY_income %>% 
+#   separate(County, into = c(\"County\", \"State\"),
+#            sep = \",\")
+```"

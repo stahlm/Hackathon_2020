@@ -1,0 +1,21 @@
+"0","```r
+Pb_data <- Pb_data %>% 
+  select(School,
+         Type_of_Organization,
+         County, 
+         School_District, 
+         School_City,
+         School_Zip_Code,
+         School_Street,
+         Number_of_Outlets_LT_15_ppb,
+         Number_of_Outlets_GT_15_ppb,
+         Any_Buildings_with_Lead_Free_Plumbing,
+         County_Location,
+         Median_HH_income,
+         County_population,
+         County_White,
+         County_Black_AfAm,
+         County_Asian,
+         County_Hispanic_Latino
+         )
+```"

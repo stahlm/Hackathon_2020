@@ -1,0 +1,4 @@
+"0","```r
+NY_race <- NY_race %>% 
+  mutate(County = str_trim(County, side = \"both\"))
+```"

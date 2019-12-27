@@ -1,0 +1,4 @@
+"0","```r
+summary_table %>% 
+  ggplot(aes(x = ))
+```"

@@ -1,2 +1,0 @@
-"0","NY_race <- NY_race %>% "
-"0","  spread(key = ""variable"", value = ""value"")"

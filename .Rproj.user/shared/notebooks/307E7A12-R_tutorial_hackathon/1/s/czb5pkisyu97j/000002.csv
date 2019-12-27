@@ -1,0 +1,6 @@
+"0","```r
+# NY_income <- NY_income %>% 
+#   select(GEOID,
+#          County = \"NAME\",
+#          HH_Income = \"estimate\")
+```"

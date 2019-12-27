@@ -1,0 +1,6 @@
+"0","Pb_data %>% "
+"0","  filter(County %in% c(""Schenectady"", ""Albany"", ""Montgomery"", ""Rensselaer"", ""Kings"", ""Bronx"")) %>% "
+"0","  ggplot(aes(x = Median_HH_income, y = Percent_Outlets_GT_15_ppb, color = County)) +"
+"0","  geom_point() +"
+"0","  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +"
+"0","  facet_wrap(~ County)"

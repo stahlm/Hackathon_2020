@@ -1,0 +1,14 @@
+"0","```r
+NY_race <- NY_race %>% 
+  rename(County = \"NAME\",
+         County_population = \"summary_value\",
+         County_White = \"P005003\",
+         County_Black_AfAm = \"P005004\",
+         County_Asian = \"P005006\",
+         County_Hispanic_Latino = \"P004003\") %>% 
+  
+  separate(County, into = c(\"County\", \"State\"),
+           sep = \",\") %>% 
+  
+  mutate(County = str_replace(County, \"County\",\"\"))
+```"

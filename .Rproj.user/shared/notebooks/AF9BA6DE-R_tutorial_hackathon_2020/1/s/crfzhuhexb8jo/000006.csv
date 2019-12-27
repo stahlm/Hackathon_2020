@@ -1,9 +1,0 @@
-"0","leaflet(a) %>%"
-"0","  addPolygons(color = ""#444444"", weight = 1, smoothFactor = 0.5, popup = ~ paste(County, round(Percent_Outlets_GT_15_ppb,2)),"
-"0","    opacity = 1.0, fillOpacity = 0.5,"
-"0","    fillColor = ~colorQuantile(""YlOrRd"", Percent_Outlets_GT_15_ppb)(Percent_Outlets_GT_15_ppb),"
-"0","    highlightOptions = highlightOptions(color = ""white"", weight = 2,"
-"0","      bringToFront = TRUE)) %>% "
-"0","  addTiles()"
-"2","sf layer has inconsistent datum (+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs).
-Need '+proj=longlat +datum=WGS84'"
